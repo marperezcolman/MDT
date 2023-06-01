@@ -1,0 +1,43 @@
+archetype (adl_version=1.4; uid=52cc4942-20a9-4f35-972d-0ab4ab84fb63)
+	openEHR-EHR-SECTION.mdt.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2023-06-01">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"f0e4370bb763cc367326c2c7c43e61fd">
+		["build_uid"] = <"7cfb8576-33d7-3880-929a-217f55d64a35">
+	>
+
+definition
+	SECTION[at0000] matches {*}    -- MDT
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"MDT">
+					description = <"MDT">
+				>
+			>
+		>
+	>
