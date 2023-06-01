@@ -23,12 +23,55 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"f0e4370bb763cc367326c2c7c43e61fd">
+		["MD5-CAM-1.0.1"] = <"81774736ac00e19d5e66f625bc66109d">
 		["build_uid"] = <"7cfb8576-33d7-3880-929a-217f55d64a35">
 	>
 
 definition
-	SECTION[at0000] matches {*}    -- MDT
+	SECTION[at0000] matches {    -- MDT
+		items cardinality matches {1..*; unordered} matches {
+			WORK_PLAN[at0062] occurrences matches {0..1} matches {    -- Work Plan
+				top_level_plans cardinality matches {1..*; unordered} matches {
+					TASK_PLAN[at0061] occurrences matches {0..1} matches {*}    -- TASK_PLAN
+				}
+				care_pathway matches {
+					ITEM_TREE matches {
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0064] occurrences matches {0..1} matches {    -- Pathway identification
+								value matches {
+									DV_IDENTIFIER matches {*}
+								}
+							}
+							ELEMENT[at0065] occurrences matches {0..1} matches {    -- MDT decision date (Date suspected cancer)
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+							ELEMENT[at0066] occurrences matches {0..1} matches {    -- Target date for starting action/treatment
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+							ELEMENT[at0067] occurrences matches {0..1} matches {    -- Definitive action/treatment date
+								value matches {
+									DV_DATE matches {*}
+								}
+							}
+						}
+					}
+				}
+				care_plan matches {
+					LOCATABLE_REF[at0068] matches {*}    -- LOCATABLE_REF
+				}
+			}
+			ENTRY[at0058] occurrences matches {0..1} matches {*}    -- Pathology
+			allow_archetype SECTION[at0059] occurrences matches {0..*} matches {    -- Pathway
+				include
+					archetype_id/value matches {/.*/}
+			}
+			SECTION[at0060] occurrences matches {0..1} matches {*}    -- Images
+		}
+	}
 
 ontology
 	term_definitions = <
@@ -37,6 +80,46 @@ ontology
 				["at0000"] = <
 					text = <"MDT">
 					description = <"MDT">
+				>
+				["at0058"] = <
+					text = <"Pathology">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"Pathway">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"Images">
+					description = <"">
+				>
+				["at0061"] = <
+					text = <"TASK_PLAN">
+					description = <"">
+				>
+				["at0062"] = <
+					text = <"Work Plan">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"Pathway identification">
+					description = <"">
+				>
+				["at0065"] = <
+					text = <"MDT decision date (Date suspected cancer)">
+					description = <"">
+				>
+				["at0066"] = <
+					text = <"Target date for starting action/treatment">
+					description = <"">
+				>
+				["at0067"] = <
+					text = <"Definitive action/treatment date">
+					description = <"">
+				>
+				["at0068"] = <
+					text = <"LOCATABLE_REF">
+					description = <"">
 				>
 			>
 		>
