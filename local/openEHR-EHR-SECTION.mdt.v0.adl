@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"ffa9f61471cd6000f9897de16269d114">
+		["MD5-CAM-1.0.1"] = <"b45360d13f120f13fa44df4524150166">
 		["build_uid"] = <"7cfb8576-33d7-3880-929a-217f55d64a35">
 	>
 
@@ -58,7 +58,17 @@ definition
 					}
 				}
 				context matches {
-					PLAN_DATA_CONTEXT matches {*}
+					PLAN_DATA_CONTEXT matches {
+						constants cardinality matches {0..*; unordered} matches {
+							CONTEXT_CONSTANT[at0069] occurrences matches {0..1} matches {*}    -- CONTEXT_CONSTANT
+						}
+						variables cardinality matches {0..*; unordered} matches {
+							EVENT_VARIABLE[at0070] occurrences matches {0..1} matches {*}    -- Organisation
+						}
+						expressions cardinality matches {0..*; unordered} matches {
+							CONTEXT_EXPRESSION[at0071] occurrences matches {0..1} matches {*}    -- CONTEXT_EXPRESSION
+						}
+					}
 				}
 				top_level_plans cardinality matches {1..*; unordered} matches {
 					TASK_PLAN[at0061] occurrences matches {0..1} matches {*}    -- Meeting details
@@ -73,6 +83,7 @@ definition
 					archetype_id/value matches {/.*/}
 			}
 			SECTION[at0060] occurrences matches {0..1} matches {*}    -- Images
+			GENERIC_ENTRY[at0072] occurrences matches {0..1} matches {*}    -- MDT generic entry test
 		}
 	}
 
@@ -122,6 +133,22 @@ ontology
 				>
 				["at0068"] = <
 					text = <"LOCATABLE_REF">
+					description = <"">
+				>
+				["at0069"] = <
+					text = <"CONTEXT_CONSTANT">
+					description = <"">
+				>
+				["at0070"] = <
+					text = <"Organisation">
+					description = <"">
+				>
+				["at0071"] = <
+					text = <"CONTEXT_EXPRESSION">
+					description = <"">
+				>
+				["at0072"] = <
+					text = <"MDT generic entry test">
 					description = <"">
 				>
 			>
