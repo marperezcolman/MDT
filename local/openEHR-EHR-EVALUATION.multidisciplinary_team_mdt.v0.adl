@@ -1,0 +1,86 @@
+archetype (adl_version=1.4; uid=04b5a318-28b4-4909-82ba-183131ad1c22)
+	openEHR-EHR-EVALUATION.multidisciplinary_team_mdt.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2023-06-02">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"617acf6ba346ba96ab5f42d7309c190e">
+		["build_uid"] = <"503acc86-2475-39a9-b331-31f1a0dc2ae8">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Multidisciplinary team mdt
+		data matches {
+			ITEM_TREE matches {*}
+		}
+		protocol matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0004] matches {    -- Referral/Pathway Cluster
+						include
+							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.referral_or_pathway\.v0/}
+					}
+					ELEMENT[at0008] occurrences matches {0..11} matches {    -- Meeting Name
+						value matches {
+							DV_IDENTIFIER matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0007] occurrences matches {0..1} matches {    -- Chair (person)
+						include
+							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.person\.v1|openEHR-EHR-CLUSTER\.structured_name\.v1/}
+					}
+					allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Multidisciplinary team mdt">
+					description = <"Multidisciplinary team mdt">
+				>
+				["at0003"] = <
+					text = <"Extension">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Referral/Pathway Cluster">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Chair (person)">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Meeting Name">
+					description = <"">
+				>
+			>
+		>
+	>
