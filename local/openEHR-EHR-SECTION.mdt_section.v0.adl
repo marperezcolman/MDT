@@ -23,67 +23,21 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"6b8ad7bc1fd18ffce5782675504e908f">
+		["MD5-CAM-1.0.1"] = <"85b7aec273f1bf506638740e28a54341">
 		["build_uid"] = <"7cfb8576-33d7-3880-929a-217f55d64a35">
 	>
 
 definition
 	SECTION[at0000] matches {    -- mdt_section
 		items cardinality matches {1..*; unordered} matches {
-			WORK_PLAN[at0062] occurrences matches {0..1} matches {    -- Work Plan
-				care_pathway matches {
-					ITEM_TREE matches {
-						items cardinality matches {0..*; unordered} matches {
-							ELEMENT[at0064] occurrences matches {0..1} matches {    -- Pathway identification
-								value matches {
-									DV_IDENTIFIER matches {*}
-								}
-							}
-							ELEMENT[at0065] occurrences matches {0..1} matches {    -- MDT decision date (Date suspected cancer)
-								value matches {
-									DV_DATE matches {*}
-								}
-							}
-							ELEMENT[at0066] occurrences matches {0..1} matches {    -- Target date for starting action/treatment
-								value matches {
-									DV_DATE matches {*}
-								}
-							}
-							ELEMENT[at0067] occurrences matches {0..1} matches {    -- Definitive action/treatment date
-								value matches {
-									DV_DATE matches {*}
-								}
-							}
-						}
-					}
-				}
-				context matches {
-					PLAN_DATA_CONTEXT matches {
-						constants cardinality matches {0..*; unordered} matches {
-							CONTEXT_CONSTANT[at0069] occurrences matches {0..1} matches {*}    -- CONTEXT_CONSTANT
-						}
-						variables cardinality matches {0..*; unordered} matches {
-							EVENT_VARIABLE[at0070] occurrences matches {0..1} matches {*}    -- Organisation
-						}
-						expressions cardinality matches {0..*; unordered} matches {
-							CONTEXT_EXPRESSION[at0071] occurrences matches {0..1} matches {*}    -- CONTEXT_EXPRESSION
-						}
-					}
-				}
-				top_level_plans cardinality matches {1..*; unordered} matches {
-					TASK_PLAN[at0061] occurrences matches {0..1} matches {*}    -- Meeting details
-				}
-				care_plan matches {
-					LOCATABLE_REF[at0068] matches {*}    -- LOCATABLE_REF
-				}
-			}
-			ENTRY[at0058] occurrences matches {0..1} matches {*}    -- Pathology
-			allow_archetype SECTION[at0059] occurrences matches {0..*} matches {    -- Pathway
+			allow_archetype INSTRUCTION[at0130] occurrences matches {0..1} matches {    -- Referral request
 				include
-					archetype_id/value matches {/.*/}
+					archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.service_request\.v1/}
 			}
-			SECTION[at0060] occurrences matches {0..1} matches {*}    -- Images
-			GENERIC_ENTRY[at0072] occurrences matches {0..1} matches {*}    -- MDT generic entry test
+			allow_archetype EVALUATION[at0189] occurrences matches {0..*} matches {    -- Clinical summary
+				include
+					archetype_id/value matches {/.*|openEHR-EHR-EVALUATION\.clinical_synopsis\.v1/}
+			}
 		}
 	}
 
@@ -95,60 +49,12 @@ ontology
 					text = <"mdt_section">
 					description = <"MDT">
 				>
-				["at0058"] = <
-					text = <"Pathology">
-					description = <"">
+				["at0130"] = <
+					text = <"Referral request">
+					description = <"Details about the referral request.">
 				>
-				["at0059"] = <
-					text = <"Pathway">
-					description = <"">
-				>
-				["at0060"] = <
-					text = <"Images">
-					description = <"">
-				>
-				["at0061"] = <
-					text = <"Meeting details">
-					description = <"">
-				>
-				["at0062"] = <
-					text = <"Work Plan">
-					description = <"">
-				>
-				["at0064"] = <
-					text = <"Pathway identification">
-					description = <"">
-				>
-				["at0065"] = <
-					text = <"MDT decision date (Date suspected cancer)">
-					description = <"">
-				>
-				["at0066"] = <
-					text = <"Target date for starting action/treatment">
-					description = <"">
-				>
-				["at0067"] = <
-					text = <"Definitive action/treatment date">
-					description = <"">
-				>
-				["at0068"] = <
-					text = <"LOCATABLE_REF">
-					description = <"">
-				>
-				["at0069"] = <
-					text = <"CONTEXT_CONSTANT">
-					description = <"">
-				>
-				["at0070"] = <
-					text = <"Organisation">
-					description = <"">
-				>
-				["at0071"] = <
-					text = <"CONTEXT_EXPRESSION">
-					description = <"">
-				>
-				["at0072"] = <
-					text = <"MDT generic entry test">
+				["at0189"] = <
+					text = <"Clinical summary">
 					description = <"">
 				>
 			>
