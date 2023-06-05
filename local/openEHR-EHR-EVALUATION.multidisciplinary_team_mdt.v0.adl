@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"f51c74b463188847408314512e65afc3">
+		["MD5-CAM-1.0.1"] = <"9fec25a97930bb5c097e84ca57ea91f8">
 		["build_uid"] = <"503acc86-2475-39a9-b331-31f1a0dc2ae8">
 	>
 
@@ -138,6 +138,11 @@ definition
 										}
 									}
 									ELEMENT[at0037] occurrences matches {0..1} matches {    -- Chemotherapy
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {    -- Hormone Therapy
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -299,6 +304,10 @@ ontology
 				>
 				["at0041"] = <
 					text = <"Patient status (Karnofsky Performance Status)">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Hormone Therapy">
 					description = <"">
 				>
 			>
