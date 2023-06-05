@@ -23,15 +23,12 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"617acf6ba346ba96ab5f42d7309c190e">
+		["MD5-CAM-1.0.1"] = <"718c63b10ed7a96a2a68fad4cca69cee">
 		["build_uid"] = <"503acc86-2475-39a9-b331-31f1a0dc2ae8">
 	>
 
 definition
-	EVALUATION[at0000] matches {    -- Multidisciplinary team mdt
-		data matches {
-			ITEM_TREE matches {*}
-		}
+	EVALUATION[at0000] matches {    -- Multidisciplinary team (MDT) Meeting
 		protocol matches {
 			ITEM_TREE matches {
 				items cardinality matches {0..*; unordered} matches {
@@ -48,10 +45,84 @@ definition
 						include
 							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.person\.v1|openEHR-EHR-CLUSTER\.structured_name\.v1/}
 					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Speciality
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Service
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
 					allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {    -- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
+				}
+			}
+		}
+		data matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Diagnosis (principal)
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Reason for MDT
+						include
+							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.clinical_evidence\.v1|openEHR-EHR-CLUSTER\.exam\.v2/}
+					}
+					CLUSTER[at0014] matches {    -- Areas of Discussion
+						items cardinality matches {1..*; unordered} matches {
+							CLUSTER[at0019] occurrences matches {0..1} matches {    -- Results
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0015] occurrences matches {0..1} matches {    -- Results - Laboratory
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Results - Microbiology
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {    -- Results - Pathology
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Results - Radiology & Images
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0020] occurrences matches {0..1} matches {    -- Personal circumstances
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0021] occurrences matches {0..1} matches {    -- Social circumstances
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- Spirituality
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {    -- Psychological assessment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0024] occurrences matches {0..1} matches {*}    -- Treatments
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {*}    -- ELEMENT
 				}
 			}
 		}
@@ -62,7 +133,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Multidisciplinary team mdt">
+					text = <"Multidisciplinary team (MDT) Meeting">
 					description = <"Multidisciplinary team mdt">
 				>
 				["at0003"] = <
@@ -80,6 +151,72 @@ ontology
 				["at0008"] = <
 					text = <"Meeting Name">
 					description = <"">
+				>
+				["at0009"] = <
+					text = <"Speciality">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Service">
+					description = <"">
+					comment = <"To be used in combination with Speciality - ie Adult/Paediatric
+">
+				>
+				["at0012"] = <
+					text = <"Reason for MDT">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Diagnosis (principal)">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Areas of Discussion">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Results - Laboratory">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Results - Pathology">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Results - Microbiology">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Results - Radiology & Images">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Results">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Personal circumstances">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Social circumstances">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Spirituality">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Psychological assessment">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Treatments">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"ELEMENT">
+					description = <"*">
 				>
 			>
 		>
