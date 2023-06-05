@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"86aab67da6c9010013ea2cd9fe457cc0">
+		["MD5-CAM-1.0.1"] = <"61109f0f773fd4d0deda429e99956756">
 		["build_uid"] = <"5226622b-9170-3777-9c36-f98e553c8c43">
 	>
 
@@ -66,15 +66,28 @@ definition
 					DV_DATE_TIME matches {*}
 				}
 			}
-			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Date & time actioned
+			ELEMENT[at0018] occurrences matches {0..1} matches {    -- New/Follow-up
 				value matches {
-					DV_DATE_TIME matches {*}
+					DV_CODED_TEXT matches {*}
 				}
 			}
 			ELEMENT[at0011] occurrences matches {0..1} matches {    -- Status of referral/pathway
 				value matches {
 					DV_CODED_TEXT matches {*}
 				}
+			}
+			allow_archetype CLUSTER[at0020] occurrences matches {0..*} matches {    -- Recipient site
+				include
+					archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.organisation\.v1/}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Date & time actioned
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0019] occurrences matches {0..*} matches {    -- Recipient organisation (Province/HB/Trust)
+				include
+					archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.organisation\.v1/}
 			}
 		}
 	}
@@ -89,11 +102,13 @@ ontology
 				>
 				["at0003"] = <
 					text = <"Referring organisation (Province/HB/Trust)">
-					description = <"">
+					description = <"High-level Organisation where referral/pathway is originated.
+In UK: Health Board or Trust
+Others: Province, Sector, etc.">
 				>
 				["at0004"] = <
 					text = <"Referring site (Hospital/Centre)">
-					description = <"">
+					description = <"Name of originating site (Centre, hospital or similar) for the referral.">
 				>
 				["at0008"] = <
 					text = <"Date & time received">
@@ -109,22 +124,38 @@ ontology
 				>
 				["at0011"] = <
 					text = <"Status of referral/pathway">
-					description = <"">
+					description = <"To depict at which state the referral/pathway is at. Shared vocabulary required.">
+					comment = <"Examples: Sent, received, actioned, request further details, cancelled, duplicate, terminated, etc.">
 				>
 				["at0014"] = <
 					text = <"Synopsis/Summary of referral/pathway">
 					description = <"">
+					comment = <"To be used with 'Clinical Evidence' cluster to detail the reasons for referral.">
 				>
 				["at0015"] = <
 					text = <"Referral/Pathway ID">
-					description = <"">
+					description = <"Unique identification of a pathwy/referral.">
 				>
 				["at0016"] = <
 					text = <"Urgency">
-					description = <"">
+					description = <"Categorisation of the referral/pathway according to level of time-to-action required.">
 				>
 				["at0017"] = <
 					text = <"Referring clinician">
+					description = <"">
+					comment = <"To be used with Person and Structured Name clusters to obtain maximum of information: role, professional registration number, structured name and last name, etc">
+				>
+				["at0018"] = <
+					text = <"New/Follow-up">
+					description = <"Select option for New pathway or Follow-up consultation of existing pathway.
+Radio button.">
+				>
+				["at0019"] = <
+					text = <"Recipient organisation (Province/HB/Trust)">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Recipient site">
 					description = <"">
 				>
 			>
