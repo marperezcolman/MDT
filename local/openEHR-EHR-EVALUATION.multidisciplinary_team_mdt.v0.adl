@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"9fec25a97930bb5c097e84ca57ea91f8">
+		["MD5-CAM-1.0.1"] = <"4907ba300af31c06a95c715b5ec20ea9">
 		["build_uid"] = <"503acc86-2475-39a9-b331-31f1a0dc2ae8">
 	>
 
@@ -85,6 +85,19 @@ definition
 						include
 							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.clinical_evidence\.v1|openEHR-EHR-CLUSTER\.exam\.v2/}
 					}
+					allow_archetype CLUSTER[at0051] occurrences matches {0..*} matches {    -- TNM Clinical clasification
+						include
+							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.tnm\.v1/}
+					}
+					allow_archetype CLUSTER[at0052] occurrences matches {0..*} matches {    -- TNM Pathology clasification
+						include
+							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.tnm-pathological\.v1/}
+					}
+					ELEMENT[at0053] occurrences matches {0..1} matches {    -- Metastases
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
 					CLUSTER[at0014] matches {    -- Areas of Discussion
 						items cardinality matches {1..*; unordered} matches {
 							CLUSTER[at0019] occurrences matches {0..1} matches {    -- Results
@@ -94,7 +107,17 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {    -- Results - Genetic
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
 									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Results - Microbiology
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Results - Radiology & Images
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -104,7 +127,26 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Results - Radiology & Images
+									ELEMENT[at0047] occurrences matches {0..1} matches {    -- Results - Tumour markers
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0048] occurrences matches {0..1} matches {    -- Results - other studies (ie: endoscopy)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+							CLUSTER[at0044] occurrences matches {0..1} matches {    -- Clinical
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0046] occurrences matches {0..1} matches {    -- Nutritional assessment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {    -- Fertility
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -172,6 +214,10 @@ definition
 						}
 					}
 					allow_archetype ELEMENT[at0041] occurrences matches {0..*} matches {    -- Patient status (Karnofsky Performance Status)
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER[at0050] occurrences matches {0..*} matches {    -- Problems list (comorbidities)
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -308,6 +354,46 @@ ontology
 				>
 				["at0042"] = <
 					text = <"Hormone Therapy">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Fertility">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Clinical">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Results - Genetic">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Nutritional assessment">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Results - Tumour markers">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Results - other studies (ie: endoscopy)">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"Problems list (comorbidities)">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"TNM Clinical clasification">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"TNM Pathology clasification">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"Metastases">
 					description = <"">
 				>
 			>
