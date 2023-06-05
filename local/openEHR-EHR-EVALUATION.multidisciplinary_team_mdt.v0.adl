@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"b2d367681cad8b4f23174885eb265d66">
+		["MD5-CAM-1.0.1"] = <"ef4249cd75ba084b2095c5c01ec1b8d9">
 		["build_uid"] = <"503acc86-2475-39a9-b331-31f1a0dc2ae8">
 	>
 
@@ -161,6 +161,16 @@ definition
 										}
 									}
 									ELEMENT[at0043] occurrences matches {0..1} matches {    -- Fertility
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0059] occurrences matches {0..1} matches {    -- Lung function
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0060] occurrences matches {0..1} matches {    -- Mobility
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -429,6 +439,14 @@ ontology
 				>
 				["at0058"] = <
 					text = <"Background">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"Lung function">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"Mobility">
 					description = <"">
 				>
 			>
