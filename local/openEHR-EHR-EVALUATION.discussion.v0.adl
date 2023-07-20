@@ -1,0 +1,155 @@
+archetype (adl_version=1.4; uid=b1be4e5d-6b21-485f-90ba-7256f24a3e13)
+	openEHR-EHR-EVALUATION.discussion.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2023-07-20">
+		["name"] = <"Marlene Pérez Colman">
+		["organisation"] = <"Digital Health and Care Wales">
+		["email"] = <"marlene.perezcolman@wales.nhs.uk">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"b50910938d0d68ad365e2f7245c3ae28">
+		["build_uid"] = <"7d69597d-a3ac-3292-8ad6-c56725e1d69c">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Discussion
+		protocol matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0001] occurrences matches {0..1} matches {    -- Last updated
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+		data matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Item discussed?
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Date of discussion
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0003] matches {    -- Item discussed name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Item Subtypes
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..*} matches {    -- Description of discussion
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Specific details
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER[at0010] occurrences matches {0..*} matches {    -- Structured body site
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Actions from discussion
+						value matches {
+							DV_CODED_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Comments
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Discussion">
+					description = <"Discussion">
+				>
+				["at0001"] = <
+					text = <"Last updated">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"Extension">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Item discussed name">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Description of discussion">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Item discussed?">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Item Subtypes">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Specific details">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Date of discussion">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Structured body site">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Comments">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Actions from discussion">
+					description = <"">
+				>
+			>
+		>
+	>
