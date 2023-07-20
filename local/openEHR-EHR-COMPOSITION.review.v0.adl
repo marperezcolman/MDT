@@ -49,7 +49,7 @@ For eksempel: brukes for å registrere Gjennomgang av legemiddelliste; eller Koo
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"A2631943AE15E5BAAE0662A49DAD80C0">
+		["MD5-CAM-1.0.1"] = <"c0442aa7167dc7d7c785842c2e91a8f4">
 		["build_uid"] = <"6867e943-e741-45a7-88cd-6f9a4662a77e">
 		["revision"] = <"0.0.1-alpha">
 	>
@@ -64,7 +64,18 @@ definition
 			}
 		}
 		context matches {
-			EVENT_CONTEXT[at0001] matches {*}    -- Event Context
+			EVENT_CONTEXT[at0001] matches {    -- Event Context
+				other_context matches {
+					ITEM_TREE matches {
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {    -- Extension
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -80,6 +91,10 @@ ontology
 					text = <"Event Context">
 					description = <"*">
 				>
+				["at0002"] = <
+					text = <"Extension">
+					description = <"">
+				>
 			>
 		>
 		["nb"] = <
@@ -91,6 +106,10 @@ ontology
 				["at0001"] = <
 					text = <"Hendelseskontekst">
 					description = <"*">
+				>
+				["at0002"] = <
+					text = <"*Extension (en)">
+					description = <"">
 				>
 			>
 		>
