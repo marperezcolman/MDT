@@ -26,7 +26,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"4af45de7c37eaf6763c821382c0f459d">
+		["MD5-CAM-1.0.1"] = <"6b562e3e901640991598f80f7ccbea83">
 		["build_uid"] = <"7d69597d-a3ac-3292-8ad6-c56725e1d69c">
 	>
 
@@ -84,6 +84,11 @@ definition
 					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Actions from discussion
 						value matches {
 							DV_CODED_TEXT matches {*}
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Confirmation of
+						value matches {
 							DV_TEXT matches {*}
 						}
 					}
@@ -153,6 +158,10 @@ ontology
 				>
 				["at0013"] = <
 					text = <"Recommendation">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Confirmation of">
 					description = <"">
 				>
 			>
