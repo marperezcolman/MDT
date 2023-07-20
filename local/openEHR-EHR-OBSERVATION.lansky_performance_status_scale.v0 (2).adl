@@ -26,12 +26,12 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"d05d26551f711d338311a54b58042da7">
+		["MD5-CAM-1.0.1"] = <"e121ccd7482b352ae75507dd09cfbd3a">
 		["build_uid"] = <"db7ccd80-2b5b-3bb9-b67e-fbee69ff1455">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- lansky_performance_status_scale
+	OBSERVATION[at0000] matches {    -- Lansky performance status scale
 		data matches {
 			HISTORY[at0001] matches {    -- History
 				events cardinality matches {1..*; unordered} matches {
@@ -41,12 +41,32 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Lansky performance status
 										value matches {
-											DV_ORDINAL matches {*}
+											100|[local::at0005],
+											90|[local::at0006],
+											80|[local::at0007],
+											70|[local::at0008],
+											60|[local::at0009],
+											50|[local::at0010],
+											40|[local::at0011],
+											30|[local::at0012],
+											20|[local::at0013],
+											10|[local::at0014],
+											0|[local::at0015]
 										}
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE matches {
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0016] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -58,7 +78,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"lansky_performance_status_scale">
+					text = <"Lansky performance status scale">
 					description = <"Lansky performance status">
 				>
 				["at0001"] = <
@@ -75,6 +95,54 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Lansky performance status">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Fully active, normal">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Minor restrictions in strenuous physical activity">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Active, but gets tired more quickly">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Both greater restriction of, and less time spent in, active play">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Up and around, but minimal active play; keeps busy with quieter activities">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Lying around much of the day, but gets dressed; no active play; participates in all quiet play and activities">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Mostly in bed; participates in quiet activities">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Stuck in bed; needs help even for quiet play">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Often sleeping; play is entirely limited to very passive activities">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Does not play nor get out of bed">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Unresponsive">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Extension">
 					description = <"">
 				>
 			>
