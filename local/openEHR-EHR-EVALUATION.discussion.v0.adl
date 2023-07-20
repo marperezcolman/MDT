@@ -26,7 +26,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"b50910938d0d68ad365e2f7245c3ae28">
+		["MD5-CAM-1.0.1"] = <"5a14caa41b1e49931505780bc5943f96">
 		["build_uid"] = <"7d69597d-a3ac-3292-8ad6-c56725e1d69c">
 	>
 
@@ -53,6 +53,8 @@ definition
 					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Item discussed?
 						value matches {
 							DV_BOOLEAN matches {*}
+							DV_CODED_TEXT matches {*}
+							DV_TEXT matches {*}
 						}
 					}
 					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Date of discussion
@@ -79,13 +81,10 @@ definition
 						include
 							archetype_id/value matches {/.*/}
 					}
-					allow_archetype CLUSTER[at0010] occurrences matches {0..*} matches {    -- Structured body site
-						include
-							archetype_id/value matches {/.*/}
-					}
 					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Actions from discussion
 						value matches {
 							DV_CODED_TEXT matches {*}
+							DV_TEXT matches {*}
 						}
 					}
 					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Comments
@@ -125,6 +124,7 @@ ontology
 				["at0006"] = <
 					text = <"Item discussed?">
 					description = <"">
+					comment = <"Yes/No or Yes and motives for No">
 				>
 				["at0007"] = <
 					text = <"Item Subtypes">
@@ -136,10 +136,6 @@ ontology
 				>
 				["at0009"] = <
 					text = <"Date of discussion">
-					description = <"">
-				>
-				["at0010"] = <
-					text = <"Structured body site">
 					description = <"">
 				>
 				["at0011"] = <
