@@ -22,10 +22,10 @@
       "original_namespace" : "",
       "original_publisher" : "",
       "custodian_namespace" : "",
-      "sem_ver" : "0.1.4",
+      "sem_ver" : "0.1.5",
       "PARENT:MD5-CAM-1.0.1" : "c0442aa7167dc7d7c785842c2e91a8f4",
       "build_uid" : "",
-      "MD5-CAM-1.0.1" : "4e777d15f5da4e981d4afbd002497f7e"
+      "MD5-CAM-1.0.1" : "744efd32222191fbde478d64cd99bb52"
     },
     "details" : {
       "nb" : {
@@ -188,8 +188,23 @@
               "@type" : "C_COMPLEX_OBJECT",
               "rmTypeName" : "ELEMENT",
               "occurrences" : "0..0",
-              "nodeId" : "at0007.1",
+              "nodeId" : "at0003.1",
               "attributes" : [ ],
+              "attributeTuples" : [ ]
+            }, {
+              "@type" : "C_COMPLEX_OBJECT",
+              "rmTypeName" : "ELEMENT",
+              "nodeId" : "at0007.1",
+              "attributes" : [ {
+                "@type" : "C_ATTRIBUTE",
+                "rmAttributeName" : "value",
+                "children" : [ {
+                  "@type" : "C_COMPLEX_OBJECT",
+                  "rmTypeName" : "DV_CODED_TEXT",
+                  "attributes" : [ ],
+                  "attributeTuples" : [ ]
+                } ]
+              } ],
               "attributeTuples" : [ ]
             }, {
               "@type" : "C_COMPLEX_OBJECT",
@@ -273,6 +288,12 @@
             "@type" : "ARCHETYPE_TERM",
             "code" : "at0014.1",
             "text" : "Imaging report(s) checked and accepted by MDT",
+            "description" : ""
+          },
+          "at0007.1" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0007.1",
+            "text" : "Imaging reviewed",
             "description" : ""
           }
         }
