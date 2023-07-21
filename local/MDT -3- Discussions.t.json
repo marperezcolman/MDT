@@ -25,7 +25,7 @@
       "sem_ver" : "0.1.1",
       "PARENT:MD5-CAM-1.0.1" : "c0442aa7167dc7d7c785842c2e91a8f4",
       "build_uid" : "",
-      "MD5-CAM-1.0.1" : "989eb2eb45685c155b51e06f37b89ba3"
+      "MD5-CAM-1.0.1" : "a91ba3c1da867d55bd1ec6922dcdae4d"
     },
     "details" : {
       "nb" : {
@@ -104,7 +104,7 @@
         "at0000.1" : {
           "@type" : "ARCHETYPE_TERM",
           "code" : "at0000.1",
-          "text" : "MDT - Discussions",
+          "text" : "MDT -3- Discussions",
           "description" : "Composition for the recording of the details of a formal review of a subject's clinical situation or any specific aspect of their clinical care."
         }
       },
