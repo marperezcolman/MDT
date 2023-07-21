@@ -26,7 +26,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"6b562e3e901640991598f80f7ccbea83">
+		["MD5-CAM-1.0.1"] = <"90163b04dead542e8382e4d9fda7ede4">
 		["build_uid"] = <"7d69597d-a3ac-3292-8ad6-c56725e1d69c">
 	>
 
@@ -57,11 +57,6 @@ definition
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Date of discussion
-						value matches {
-							DV_DATE_TIME matches {*}
-						}
-					}
 					ELEMENT[at0003] matches {    -- Item discussed name
 						value matches {
 							DV_TEXT matches {*}
@@ -87,14 +82,10 @@ definition
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Confirmation of
+					ELEMENT[at0014] occurrences matches {0..1} matches {    -- Report checked
 						value matches {
 							DV_TEXT matches {*}
-						}
-					}
-					ELEMENT[at0013] occurrences matches {0..1} matches {    -- Recommendation
-						value matches {
-							DV_TEXT matches {*}
+							DV_CODED_TEXT matches {*}
 						}
 					}
 					ELEMENT[at0011] occurrences matches {0..1} matches {    -- Comments
@@ -144,10 +135,6 @@ ontology
 					text = <"Specific details">
 					description = <"">
 				>
-				["at0009"] = <
-					text = <"Date of discussion">
-					description = <"">
-				>
 				["at0011"] = <
 					text = <"Comments">
 					description = <"">
@@ -156,12 +143,8 @@ ontology
 					text = <"Actions from discussion">
 					description = <"">
 				>
-				["at0013"] = <
-					text = <"Recommendation">
-					description = <"">
-				>
 				["at0014"] = <
-					text = <"Confirmation of">
+					text = <"Report checked">
 					description = <"">
 				>
 			>
