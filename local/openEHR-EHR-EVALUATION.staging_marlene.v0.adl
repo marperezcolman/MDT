@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"124823d2948ad2590548d4c30558acde">
+		["MD5-CAM-1.0.1"] = <"d2cd0889faef28ec29eb67b10794cfcd">
 		["build_uid"] = <"3621c918-def3-3122-a1fe-f672273f400d">
 	>
 
@@ -47,7 +47,7 @@ definition
 							DV_CODED_TEXT matches {*}
 						}
 					}
-					CLUSTER[at0013] occurrences matches {0..1} matches {    -- Staging system
+					CLUSTER[at0013] occurrences matches {0..*} matches {    -- Staging system
 						items cardinality matches {1..*; unordered} matches {
 							ELEMENT[at0017] occurrences matches {0..1} matches {    -- Staging system name
 								value matches {
