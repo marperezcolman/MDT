@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"d2cd0889faef28ec29eb67b10794cfcd">
+		["MD5-CAM-1.0.1"] = <"bf9262c563053f1777a51edfd24d41b6">
 		["build_uid"] = <"3621c918-def3-3122-a1fe-f672273f400d">
 	>
 
@@ -87,6 +87,11 @@ definition
 					allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Signs/Symptoms
 						include
 							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.symptom_sign\.v2/}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Comments
+						value matches {
+							DV_TEXT matches {*}
+						}
 					}
 				}
 			}
@@ -172,6 +177,10 @@ ontology
 				["at0017"] = <
 					text = <"Staging system name">
 					description = <"Name given to the staging system (ie TNM, Figo, Duke, Breslow)">
+				>
+				["at0018"] = <
+					text = <"Comments">
+					description = <"">
 				>
 			>
 		>
