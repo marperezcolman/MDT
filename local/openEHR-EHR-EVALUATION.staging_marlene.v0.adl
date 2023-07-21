@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"b458a13224c21b7376702153d1df364f">
+		["MD5-CAM-1.0.1"] = <"124823d2948ad2590548d4c30558acde">
 		["build_uid"] = <"3621c918-def3-3122-a1fe-f672273f400d">
 	>
 
@@ -47,9 +47,23 @@ definition
 							DV_CODED_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0006] occurrences matches {0..*} matches {    -- Staging system
-						include
-							archetype_id/value matches {/.*/}
+					CLUSTER[at0013] occurrences matches {0..1} matches {    -- Staging system
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0017] occurrences matches {0..1} matches {    -- Staging system name
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0015] occurrences matches {0..1} matches {    -- System version
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0016] occurrences matches {0..*} matches {    -- System
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
 					}
 					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Stage
 						value matches {
@@ -118,10 +132,6 @@ ontology
 					description = <"Describe at which stage of the diagnostic/treatment process the evaluation is being done">
 					comment = <"ie: pre treatment, post surgical, post chemotherapy, post radiotherapy, or other relevant status that is relevant to the staging.">
 				>
-				["at0006"] = <
-					text = <"Staging system">
-					description = <"">
-				>
 				["at0007"] = <
 					text = <"Type">
 					description = <"Source describing the type of staging">
@@ -146,6 +156,22 @@ ontology
 				["at0012"] = <
 					text = <"Signs/Symptoms">
 					description = <"">
+				>
+				["at0013"] = <
+					text = <"Staging system">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"System version">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"System">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Staging system name">
+					description = <"Name given to the staging system (ie TNM, Figo, Duke, Breslow)">
 				>
 			>
 		>
