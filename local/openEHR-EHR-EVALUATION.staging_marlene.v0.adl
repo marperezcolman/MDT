@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"bf9262c563053f1777a51edfd24d41b6">
+		["MD5-CAM-1.0.1"] = <"905b4f7cbd9919116e009d73d778c1d4">
 		["build_uid"] = <"3621c918-def3-3122-a1fe-f672273f400d">
 	>
 
@@ -79,16 +79,20 @@ definition
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Clinical interpretation
-						value matches {
-							DV_TEXT matches {*}
-						}
-					}
 					allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Signs/Symptoms
 						include
 							archetype_id/value matches {/.*|openEHR-EHR-CLUSTER\.symptom_sign\.v2/}
 					}
+					allow_archetype CLUSTER[at0019] occurrences matches {0..*} matches {    -- Specific details
+						include
+							archetype_id/value matches {/.*/}
+					}
 					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Comments
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Clinical interpretation
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -180,6 +184,10 @@ ontology
 				>
 				["at0018"] = <
 					text = <"Comments">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Specific details">
 					description = <"">
 				>
 			>
